@@ -20,16 +20,16 @@ public class StmtParser {
 		StringBuilder sb=new StringBuilder();
 		//拼q参数
 		if((stmt.getMode()).equals(ConfigConsts.INORDER_MODE)) {
-			sb.append("q:\"").append(stmt.getqPara()).append("\"");
+			sb.append("q=\"").append(stmt.getqPara()).append("\"~12");
 			sb.append("&defType=complexPhrase");
 		}else if((stmt.getMode()).equals(ConfigConsts.OFFSET_MODE)) {
-			sb.append("q:\"").append(stmt.getqPara()).append("\"");
+			sb.append("q=\"").append(stmt.getqPara()).append("\"~12");
 			sb.append("&defType=offsetphrase");
 		}else {
-			sb.append("q:").append(stmt.getqPara());
+			sb.append("q=").append(stmt.getqPara());
 		}
 		if(!StringUtils.isEmpty(stmt.getFqPara()) )
-				sb.append("&fq:").append(stmt.getFqPara());
+				sb.append("&fq=").append(stmt.getFqPara());
 		sb.append("&start=").append(stmt.getStart());
 		sb.append("&rows=").append(stmt.getRows());		
 		sb.append("&wt=json&omitHeader=true");

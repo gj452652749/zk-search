@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.zkyunso.microservice.search.context.AppContext;
 import com.zkyunso.microservice.search.service.AppService;
 import com.zkyunso.microservice.search.stmt.SearchStmt;
 
