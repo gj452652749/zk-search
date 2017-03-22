@@ -11,6 +11,16 @@ public class SearchStmt {
 	int rows=10;
 	String mode=ConfigConsts.CUSTOM_MODE;
 	
+	public SearchStmt() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SearchStmt(String core, String qPara, String fqPara) {
+		super();
+		this.core = core;
+		this.qPara = qPara;
+		this.fqPara = fqPara;
+	}
 	public String getCore() {
 		return core;
 	}
