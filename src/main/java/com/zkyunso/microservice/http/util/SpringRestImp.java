@@ -34,7 +34,10 @@ public class SpringRestImp implements HttpRest{
 	public String post(String url,String dataJson) {
 		// TODO Auto-generated method stub
 		HttpHeaders headers = new HttpHeaders(); 
-		headers.setContentType(MediaType.TEXT_PLAIN); 
+		headers.setContentType(MediaType.APPLICATION_JSON_UTF8); 
+		return post(dataJson, dataJson, headers);
+	}
+	public String post(String url,String dataJson,HttpHeaders headers) {
 		HttpEntity<String> entity = new HttpEntity<String>(dataJson, headers); 
 		ResponseEntity<String> response=restTemplate.exchange(url, HttpMethod.POST, entity,String.class); 
 		return response.getBody();
