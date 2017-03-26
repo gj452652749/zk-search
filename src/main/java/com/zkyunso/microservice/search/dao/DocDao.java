@@ -3,12 +3,13 @@ package com.zkyunso.microservice.search.dao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.zkyunso.microservice.search.context.AppContext;
 import com.zkyunso.microservice.search.manager.SearchManager;
 import com.zkyunso.microservice.search.stmt.SearchStmt;
 import com.zkyunso.microservice.search.stmt.StmtParser;
-
+@Repository
 public class DocDao {
 	private static final Logger logger=LoggerFactory.getLogger(SchemaDao.class);
 	@Autowired

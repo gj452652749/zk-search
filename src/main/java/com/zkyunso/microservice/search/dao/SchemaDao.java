@@ -50,7 +50,9 @@ public class SchemaDao {
 	 * @param idJsonArrayStr
 	 */
 	public void remove(String core,String jsonStr) {
-		
+		String cmdJsonStr="{\"delete-field\":"+jsonStr+"}";
+		String resultJson=doCmd(core, cmdJsonStr);
+		logger.info(resultJson);
 	}
 	/**
 	 * {
@@ -62,7 +64,9 @@ public class SchemaDao {
 	 * @param docJsonStr
 	 */
 	public void update(String core,String jsonStr) {
-		
+		String cmdJsonStr="{\"replace-field\":"+jsonStr+"}";
+		String resultJson=doCmd(core, cmdJsonStr);
+		logger.info(resultJson);
 	}
 	public String doCmd(String core,String cmdJsonStr) {
 		String url=context.getEngineUrl()+"/"+core+"/schema";
