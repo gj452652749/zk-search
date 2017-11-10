@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.zkyunso.microservice.search.stmt.AnalysisStmt;
 
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class AnalysisDaoTest {
@@ -16,7 +17,7 @@ public class AnalysisDaoTest {
 	@Test
 	public void get() {
 		AnalysisStmt stmt=new AnalysisStmt("address","text_ik_mutable","武汉市中科院");
-		dao.get(stmt);
+		dao.get("im",stmt);
 	}
 
 }

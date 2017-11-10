@@ -6,6 +6,7 @@ import org.springframework.util.StringUtils;
 
 import com.zkyunso.microservice.search.constant.ConfigConsts;
 import com.zkyunso.microservice.search.context.AppContext;
+import com.zkyunso.searchengine.cloud.CloudEngine;
 
 /**
  * 将stmt解析成 engine rest url
@@ -15,7 +16,7 @@ import com.zkyunso.microservice.search.context.AppContext;
 @Component
 public class StmtParser {
 	@Autowired
-	AppContext context;
+	CloudEngine cloudEngine;
 	public String combineStmtParas(SearchStmt stmt) {
 		StringBuilder sb=new StringBuilder();
 		//拼q参数
@@ -37,7 +38,7 @@ public class StmtParser {
 	}
 	public String parseStmt(SearchStmt stmt) {
 		StringBuilder sb=new StringBuilder();
-		sb.append(context.getEngineUrl());
+		sb.append(cloudEngine.getHost());
 		sb.append("/").append(stmt.getCore()).append("/select?");
 		return null;
 	}
