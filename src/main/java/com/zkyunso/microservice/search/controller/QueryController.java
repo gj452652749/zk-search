@@ -18,8 +18,8 @@ public class QueryController {
 	QueryService service;
 	@RequestMapping("/select")
 	@ResponseBody
-	public String search(@PathVariable(value="collName") String collName,QueryStmt stmt) {
-		//return service.select("im_chatrecord",stmt);
-		return service.select(collName,stmt);
+	public String search(@PathVariable(value = "collName") String collName, QueryStmt stmt) throws Exception {
+		// return service.select("im_chatrecord",stmt);
+		return service.select(collName, stmt);
 	}
 }

@@ -1,6 +1,6 @@
 spring:
  profiles:
-  active: pre
+  active: dev
 ---  
 spring:
  profiles: dev
@@ -10,7 +10,7 @@ zk:
 spring:
  profiles: pre
 zk:
- hosts: 106.14.217.42:2181
+ hosts: 47.100.31.238:2181
 ---
 spring:
  profiles: pro

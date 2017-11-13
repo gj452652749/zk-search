@@ -17,19 +17,23 @@ import com.zkyunso.microservice.search.service.DocService;
 public class DocController {
 	@Autowired
 	DocService docService;
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
-	public void save(@PathVariable(value="collName") String collName,@RequestBody String docJsonStr) {
-		docService.add(collName,docJsonStr);
+	public String save(@PathVariable(value = "collName") String collName, @RequestBody String docJsonStr)
+			throws Exception {
+		return docService.add(collName, docJsonStr);
 	}
+
 	@RequestMapping(value = "/set", method = RequestMethod.POST)
 	@ResponseBody
-	public void set(String collName,String id,String field,String value) {
-		docService.set("im_chatrecord",id,field,value);
+	public void set(String collName, String id, String field, String value) throws Exception {
+		docService.set("im_chatrecord", id, field, value);
 	}
+
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	public void delete(String idJsonArray) {
-		
+	public String delete(@PathVariable(value = "collName") String collName,@RequestBody String idJsonArray) throws Exception {
+		return docService.delete(collName,idJsonArray);
 	}
 }

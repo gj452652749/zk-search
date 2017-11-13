@@ -55,7 +55,7 @@ public class DocDao {
 	 * @param docJsonStr
 	 */
 	public void add(String collName,String docJsonStr) {
-		execUpdateCmd(collName,"["+docJsonStr+"]");
+		execUpdateCmd(collName,docJsonStr);
 	}
 	public void set(String collName,String id,String field,String value) {
 		String json= "[{\"id\":\""+id+"\","+field+":{\"set\":\""+value+"\"}}]";
@@ -65,5 +65,8 @@ public class DocDao {
 		String json= "[{\"id\":"+id+",\""+fieldName+"\":{\"inc\":"+offset+"}}]";
 		execUpdateCmd(collName,json);
 	}
-
+	public void delete(String collName,String idJsonArray) {
+		String json= "{ \"delete\":"+idJsonArray+" }";
+		execUpdateCmd(collName,json);
+	}
 }
