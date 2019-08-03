@@ -16,7 +16,7 @@ public class AnalysisDaoTest {
 	@Test
 	public void get() {
 		AnalysisStmt stmt=new AnalysisStmt("address","text_ik_mutable","武汉市中科院");
-		dao.get(stmt);
+		//dao.get(stmt);
 	}
 
 }
