@@ -1,0 +1,18 @@
+spring:
+ profiles:
+  active: dev
+---  
+spring:
+ profiles: dev
+zk:
+ hosts: 10.0.31.133:2181
+---
+spring:
+ profiles: pre
+zk:
+ hosts: 47.100.31.238:2181
+---
+spring:
+ profiles: pro
+zk:
+ hosts: 172.19.101.243:2181

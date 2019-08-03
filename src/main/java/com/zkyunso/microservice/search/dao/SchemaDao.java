@@ -5,15 +5,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.zkyunso.microservice.search.context.AppContext;
 import com.zkyunso.microservice.search.manager.SearchManager;
 import com.zkyunso.microservice.search.stmt.StmtParser;
+import com.zkyunso.searchengine.cloud.CloudEngine;
 
 @Repository
 public class SchemaDao {
 	private static final Logger logger=LoggerFactory.getLogger(SchemaDao.class);
 	@Autowired
-	AppContext context;
+	CloudEngine cloudEngine;
 	@Autowired
 	StmtParser parser;
 	@Autowired
@@ -24,7 +24,7 @@ public class SchemaDao {
 	 * @return
 	 */
 	public String getALl(String core) {
-		String url=context.getEngineUrl()+"/"+core+"/schema/fields?wt=json";
+		String url=cloudEngine.getHost()+"/"+core+"/schema/fields?wt=json";
 		String resultJson=searchManager.getHttpRest().get(url);
 		logger.info(resultJson);
 		return resultJson;
@@ -69,7 +69,7 @@ public class SchemaDao {
 		logger.info(resultJson);
 	}
 	public String doCmd(String core,String cmdJsonStr) {
-		String url=context.getEngineUrl()+"/"+core+"/schema";
+		String url=cloudEngine.getHost()+"/"+core+"/schema";
 		String resultJson=searchManager.getHttpRest().post(url, cmdJsonStr);
 		return resultJson;
 	}

@@ -11,8 +11,8 @@ import com.zkyunso.microservice.search.stmt.SearchStmt;
 public class AnalysisService {
 	@Autowired
 	AnalysisDao dao;
-	public String get(AnalysisStmt stmt) {
-		String json=dao.get(stmt);
+	public String get(String collName,AnalysisStmt stmt) {
+		String json=dao.get(collName,stmt);
 		return json;
 	}
 

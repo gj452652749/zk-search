@@ -12,8 +12,8 @@ import com.zkyunso.microservice.search.stmt.AnalysisStmt;
 public class AnalysisController {
 	@Autowired
 	AnalysisService service;
-	public String get(AnalysisStmt stmt) {
-		return service.get(stmt);
+	public String get(String collName,AnalysisStmt stmt) {
+		return service.get(collName,stmt);
 	}
 
 }
