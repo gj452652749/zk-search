@@ -18,6 +18,13 @@ public class DocController {
 	@Autowired
 	DocService docService;
 
+	@RequestMapping(value = "/execUpdateCmd", method = RequestMethod.POST)
+	@ResponseBody
+	public String execUpdateCmd(@PathVariable(value = "collName") String collName, @RequestBody String cmdJson)
+			throws Exception {
+		return docService.execUpdateCmd(collName, cmdJson);
+	}
+
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	@ResponseBody
 	public String save(@PathVariable(value = "collName") String collName, @RequestBody String docJsonStr)
