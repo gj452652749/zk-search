@@ -12,7 +12,7 @@ import com.zkyunso.microservice.search.stmt.StmtParser;
 import com.zkyunso.searchengine.cloud.CloudEngine;
 @Repository
 public class DocDao {
-	private static final Logger logger=LoggerFactory.getLogger(SchemaDao.class);
+	private static final Logger logger=LoggerFactory.getLogger(DocDao.class);
 	@Autowired
 	AppContext context;
 	@Autowired

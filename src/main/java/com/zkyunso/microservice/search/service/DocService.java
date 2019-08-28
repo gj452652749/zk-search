@@ -15,6 +15,10 @@ import com.zkyunso.microservice.search.dao.DocDao;
 public class DocService {
 	@Autowired
 	DocDao dao;
+	public String save(String collName,String docJsonStr) {
+		dao.save(collName,docJsonStr);
+		return JSONObject.toJSONString(new ResponseResult());
+	}
 	public String add(String collName,String docJsonStr) {
 		dao.add(collName,docJsonStr);
 		return JSONObject.toJSONString(new ResponseResult());

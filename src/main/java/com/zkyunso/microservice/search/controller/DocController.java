@@ -22,18 +22,33 @@ public class DocController {
 	@ResponseBody
 	public String save(@PathVariable(value = "collName") String collName, @RequestBody String docJsonStr)
 			throws Exception {
+		return docService.save(collName, docJsonStr);
+	}
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@ResponseBody
+	public String add(@PathVariable(value = "collName") String collName, @RequestBody String docJsonStr)
+			throws Exception {
 		return docService.add(collName, docJsonStr);
 	}
 
 	@RequestMapping(value = "/set", method = RequestMethod.POST)
 	@ResponseBody
 	public void set(String collName, String id, String field, String value) throws Exception {
-		docService.set("im_chatrecord", id, field, value);
+		docService.set(collName, id, field, value);
+	}
+
+	@RequestMapping(value = "/setJson/{id}/{field}", method = RequestMethod.POST)
+	@ResponseBody
+	public void setJson(@PathVariable(value = "collName") String collName, @PathVariable(value = "id") String id,
+			@PathVariable(value = "field") String field, @RequestBody String valuedocJsonStr) throws Exception {
+		docService.set(collName, id, field, valuedocJsonStr);
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	@ResponseBody
-	public String delete(@PathVariable(value = "collName") String collName,@RequestBody String idJsonArray) throws Exception {
-		return docService.delete(collName,idJsonArray);
+	public String delete(@PathVariable(value = "collName") String collName, @RequestBody String idJsonArray)
+			throws Exception {
+		return docService.delete(collName, idJsonArray);
 	}
 }

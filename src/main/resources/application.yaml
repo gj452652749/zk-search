@@ -5,14 +5,14 @@ spring:
 spring:
  profiles: dev
 zk:
- hosts: 10.0.31.133:2181
+ hosts: 49.234.99.59:2181
 ---
 spring:
  profiles: pre
 zk:
- hosts: 47.100.31.238:2181
+ hosts: 49.234.99.59:2181
 ---
 spring:
  profiles: pro
 zk:
- hosts: 172.19.101.243:2181
+ hosts: 49.234.99.59:2181

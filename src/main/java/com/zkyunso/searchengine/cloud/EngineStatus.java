@@ -23,7 +23,7 @@ public class EngineStatus {
 	@Value("${zk.hosts}")
 	String zkHosts;
 	Random random = new Random();
-	@PostConstruct
+//	@PostConstruct
 	public void init() {
         zkClient = new ZkClient(zkHosts,10000,10000,new SerializableSerializer());  
         logger.info("The engine is started!"+zkHosts);  
