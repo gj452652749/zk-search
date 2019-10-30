@@ -21,8 +21,6 @@ public class DocService {
 		dao.save(collName,docJsonStr);
 		return JSONObject.toJSONString(new ResponseResult());
 	}
-	public String add(String collName,String docJsonStr) {
-		dao.add(collName,docJsonStr);
 
 	public String execUpdateCmd(String collName, String cmdJson) {
 		dao.execUpdateCmd(collName, cmdJson);

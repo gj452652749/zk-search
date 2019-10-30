@@ -33,6 +33,7 @@ public class DocDao {
 	public void save(String collName, String docJsonStr) {
 		String cmdJsonStr = "{add :{doc:" + docJsonStr + ",boost:1," + "overwrite:true,commitWithin:1000}}";
 		String url = cloudEngine.getHost() + "/" + collName + "/update?commit=true";
+		System.out.println(cmdJsonStr);
 		String result = searchManager.getHttpRest().post(url, cmdJsonStr);
 		logger.info(result);
 	}
