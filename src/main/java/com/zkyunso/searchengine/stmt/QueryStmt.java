@@ -5,12 +5,14 @@ import com.zkyunso.microservice.search.constant.SearchModeEnums;
 public class QueryStmt {
 	String qPara = null;
 	String fqPara = null;
+	String fl;
 	String sfield = null;
 	String pt = null;
 	int d = 1;
 	String sort = null;
 	String extraPara = null;// &fl=xxx
 	String searchMode = SearchModeEnums.COMMON;
+	String facetField=null;
 	int start = 0;
 	int rows = 10;
 
@@ -19,17 +21,19 @@ public class QueryStmt {
 		// TODO Auto-generated constructor stub
 	}
 
-	public QueryStmt(String qPara, String fqPara, String sfield, String pt, int d, String sort, String extraPara,
-			String searchMode, int start, int rows) {
+	public QueryStmt(String qPara, String fqPara,String fl, String sfield, String pt, int d, String sort, String extraPara,
+			String searchMode,String facetField, int start, int rows) {
 		super();
 		this.qPara = qPara;
 		this.fqPara = fqPara;
+		this.fl=fl;
 		this.sfield = sfield;
 		this.pt = pt;
 		this.d = d;
 		this.sort = sort;
 		this.extraPara = extraPara;
 		this.searchMode = searchMode;
+		this.facetField=facetField;
 		this.start = start;
 		this.rows = rows;
 	}
@@ -48,6 +52,14 @@ public class QueryStmt {
 
 	public void setFqPara(String fqPara) {
 		this.fqPara = fqPara;
+	}
+
+	public String getFl() {
+		return fl;
+	}
+
+	public void setFl(String fl) {
+		this.fl = fl;
 	}
 
 	public String getSfield() {
@@ -88,6 +100,14 @@ public class QueryStmt {
 
 	public void setExtraPara(String extraPara) {
 		this.extraPara = extraPara;
+	}
+
+	public String getFacetField() {
+		return facetField;
+	}
+
+	public void setFacetField(String facetField) {
+		this.facetField = facetField;
 	}
 
 	public int getStart() {

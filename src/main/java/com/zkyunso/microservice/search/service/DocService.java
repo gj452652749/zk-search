@@ -35,6 +35,10 @@ public class DocService {
 	public void set(String collName, String id, String field, String value) {
 		dao.set(collName, id, field, value);
 	}
+	
+	public void incById(String collName, String id, String fieldName, int offset) {
+		dao.incById(collName, id, fieldName, offset);
+	}
 
 	public String delete(String collName, String idJsonArray) {
 		dao.delete(collName, idJsonArray);

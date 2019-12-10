@@ -44,6 +44,12 @@ public class DocController {
 	public void set(String collName, String id, String field, String value) throws Exception {
 		docService.set(collName, id, field, value);
 	}
+	
+	@RequestMapping(value = "/incById", method = RequestMethod.POST)
+	@ResponseBody
+	public void incById(String collName, String id, String field, int offset) throws Exception {
+		docService.incById(collName, id, field, offset);
+	}
 
 	@RequestMapping(value = "/setJson/{id}/{field}", method = RequestMethod.POST)
 	@ResponseBody

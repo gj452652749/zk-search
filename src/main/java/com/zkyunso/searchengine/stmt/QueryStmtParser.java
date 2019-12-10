@@ -22,8 +22,14 @@ public class QueryStmtParser {
 			sb.append("&fq=").append(stmt.getFqPara());
 		}
 		sb.append("&q.op=AND");
+		if (!StringUtils.isEmpty(stmt.fl)) {
+			sb.append("&fl=").append(stmt.getFl());
+		}
 		if (!StringUtils.isEmpty(stmt.getSort())) {
 			sb.append("&sort=").append(stmt.getSort());
+		}
+		if (!StringUtils.isEmpty(stmt.getFacetField())) {
+			sb.append("&facet=true&facet.field=").append(stmt.getFacetField());
 		}
 		// 防止start为负数
 		if (stmt.getStart() < 0)
