@@ -15,7 +15,7 @@ public class CloudEngine {
 	}
 	public String getHost() {
 		//return status.getSearchBaseUrl();
-		return "http://127.0.0.1:8090/solr";
+		return "http://103.26.78.57:8090/solr";
 	}
 	public String generateSaveCmdJson(String json) {
 		return null;

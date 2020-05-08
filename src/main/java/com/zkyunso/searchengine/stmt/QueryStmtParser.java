@@ -21,7 +21,7 @@ public class QueryStmtParser {
 		if (!StringUtils.isEmpty(stmt.getFqPara())) {
 			sb.append("&fq=").append(stmt.getFqPara());
 		}
-		sb.append("&q.op=AND");
+		sb.append("&q.op=OR");
 		if (!StringUtils.isEmpty(stmt.fl)) {
 			sb.append("&fl=").append(stmt.getFl());
 		}
@@ -48,13 +48,15 @@ public class QueryStmtParser {
 		}
 		sb.append("&d=" + stmt.getD());
 		sb.append("&fq={fq}");
-		sb.append("&q.op=AND");
+		sb.append("&q.op=OR");
 		sb.append("&sfield=loc");
 		sb.append("&fl=*,score,_dist_:geodist()");
 		if (!StringUtils.isEmpty(stmt.getPt())) {
 			sb.append("&pt=").append(stmt.getPt());
 		}
-		sb.append("&sort=geodist() asc");
+		if (!StringUtils.isEmpty(stmt.getSort())) {
+			sb.append("&sort=").append(stmt.getSort());
+		} else sb.append("&sort=geodist() asc");
 		// 防止start为负数
 		if (stmt.getStart() < 0)
 			stmt.setStart(0);
