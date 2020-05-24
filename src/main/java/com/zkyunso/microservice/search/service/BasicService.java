@@ -34,6 +34,24 @@ public class BasicService {
 		return JSONObject.toJSONString(resultResp);
 	}
 	
+	public String formatMultiFacetResultWithRows(String result) {
+		ResponseResult resultResp=new ResponseResult();
+		JSONObject jsonObj=JSON.parseObject(result);
+		JSONArray jsonArray=jsonObj.getJSONObject("response")
+									.getJSONArray("docs");
+		JSONObject dataJson=new JSONObject();
+		int numFound=jsonObj.getJSONObject("response").getIntValue("numFound");
+		dataJson.put("numFound", numFound);
+		dataJson.put("records", jsonArray);
+		
+		JSONObject facetJsonObj=jsonObj.getJSONObject("facet_counts")
+				.getJSONObject("facet_fields");
+		dataJson.put("facet_fields", facetJsonObj);
+		
+		resultResp.setData(dataJson);
+		return JSONObject.toJSONString(resultResp);
+	}
+	
 	public String formatFacetResultWithRows(String result) {
 		ResponseResult resultResp=new ResponseResult();
 		JSONObject jsonObj=JSON.parseObject(result);

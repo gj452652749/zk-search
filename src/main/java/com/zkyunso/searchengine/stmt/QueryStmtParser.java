@@ -13,6 +13,35 @@ import com.zkyunso.microservice.search.constant.SearchModeEnums;
  */
 @Component
 public class QueryStmtParser {
+	
+	//传入的是'type,city'，输出标准solr格式'facet.field=yupe&facet.field=city'
+	public String generateFacetFieldPara(String facetField) {
+		if(!facetField.contains(","))
+			return "&facet.field="+facetField;
+		String[] fields=facetField.split(",");
+		String result="";
+		for(String ele : fields) {
+			result=result+"&facet.field="+ele;
+		}
+		return result;
+	}
+	
+	//输入"labels:爬山 city:杭州"
+	//输出"(labels:爬山 AND city:杭州)
+	public String formatFq(String fqPara) {
+		if(StringUtils.isEmpty(fqPara))
+			return "";
+		String fq="(";
+		String[] fqTerms=fqPara.trim().split(" ");
+		for(int i=0;i<=fqTerms.length-1;i++) {
+			fq=fq+fqTerms[i];
+			if(i!=fqTerms.length-1) fq=fq+" AND ";
+		}
+		fq=fq+")";
+		System.out.println("formatFq:"+fq);
+		return fq;
+		
+	}
 	public String parseStmt(QueryStmt stmt) {
 		StringBuilder sb = new StringBuilder();
 		if (!StringUtils.isEmpty(stmt.getqPara())) {
@@ -29,7 +58,7 @@ public class QueryStmtParser {
 			sb.append("&sort=").append(stmt.getSort());
 		}
 		if (!StringUtils.isEmpty(stmt.getFacetField())) {
-			sb.append("&facet=true&facet.field=").append(stmt.getFacetField());
+			sb.append("&facet=true").append(generateFacetFieldPara(stmt.getFacetField())).append("&facet.mincount=1");
 		}
 		// 防止start为负数
 		if (stmt.getStart() < 0)

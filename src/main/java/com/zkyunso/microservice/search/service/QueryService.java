@@ -12,8 +12,11 @@ public class QueryService extends BasicService{
 	QueryDao dao;
 	public String select(String collName,QueryStmt stmt) {
 		String json=dao.getResult(collName,stmt);
-		if(!StringUtils.isEmpty(stmt.getFacetField()))
+		if(!StringUtils.isEmpty(stmt.getFacetField())) {
+			if(stmt.getFacetField().contains(","))
+				return formatMultiFacetResultWithRows(json);
 			return formatFacetResultWithRows(json);
+		}
 		return formatResultWithRows(json);
 	}
 	public String query(String collName,QueryStmt stmt) {
