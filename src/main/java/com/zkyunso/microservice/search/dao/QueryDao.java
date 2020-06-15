@@ -61,13 +61,13 @@ public class QueryDao {
 		else {
 			Map<String, String> paraMap = new HashMap<String, String>();
 			String fq=queryStmtParser.formatFq(stmt.getFqPara());
-			if(""!=fq) fq=fq+" AND ";
-			fq=fq+"{!geofilt}";
+//			if(""!=fq) fq=fq+" AND ";
+//			fq=fq+"{!geofilt}";
 			System.out.println("fqPara:"+fq);
 			paraMap.put("fq", fq);
 			result = searchManager.getHttpRest().get(url, paraMap);
 		}
-		logger.info(result);
+		//logger.info(result);
 		return result;
 	}
 

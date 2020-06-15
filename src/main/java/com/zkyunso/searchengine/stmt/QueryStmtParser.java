@@ -31,13 +31,14 @@ public class QueryStmtParser {
 	public String formatFq(String fqPara) {
 		if(StringUtils.isEmpty(fqPara))
 			return "";
-		String fq="(";
-		String[] fqTerms=fqPara.trim().split(" ");
-		for(int i=0;i<=fqTerms.length-1;i++) {
-			fq=fq+fqTerms[i];
-			if(i!=fqTerms.length-1) fq=fq+" AND ";
-		}
-		fq=fq+")";
+		String fq="("+fqPara.trim().replaceAll(" +", " AND ")+")";
+//		String fq="(";
+//		String[] fqTerms=fqPara.trim().split(" ");
+//		for(int i=0;i<=fqTerms.length-1;i++) {
+//			fq=fq+fqTerms[i];
+//			if(i!=fqTerms.length-1) fq=fq+" AND ";
+//		}
+//		fq=fq+")";
 		System.out.println("formatFq:"+fq);
 		return fq;
 		
@@ -75,7 +76,7 @@ public class QueryStmtParser {
 		if (!StringUtils.isEmpty(stmt.getqPara())) {
 			sb.append("q=").append(stmt.getqPara());
 		}
-		sb.append("&d=" + stmt.getD());
+		//sb.append("&d=" + stmt.getD());
 		sb.append("&fq={fq}");
 		sb.append("&q.op=OR");
 		sb.append("&sfield=loc");

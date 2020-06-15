@@ -8,7 +8,7 @@ public class QueryStmt {
 	String fl;
 	String sfield = null;
 	String pt = null;
-	int d = 1;
+	int d = 0;
 	String sort = null;
 	String extraPara = null;// &fl=xxx
 	String searchMode = SearchModeEnums.COMMON;
